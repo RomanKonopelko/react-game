@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Canvas from "./Components/Canvas/Canvas";
-
+import data from "./Components/data";
 export default function App() {
   return (
     <Router>
@@ -43,7 +43,7 @@ function Play() {
   return (
     <div>
       <h2>Play Breakout</h2>
-      <Canvas />
+      <Canvas data={data} />
     </div>
   );
 }
