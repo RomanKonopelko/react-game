@@ -7,6 +7,12 @@ export default {
     rad: 10,
     speed: 10,
   },
+  paddleObj: {
+    height: 20,
+    width: 100,
+    x: 100,
+    color: "orange",
+  },
   brickObj: {
     x: 0.5,
     y: 50,
