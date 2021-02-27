@@ -19,12 +19,12 @@ export default {
     width: 800 / 10 - 1,
     height: 20,
     density: 2,
-    colors: ["blue", "lightblue"],
+    colors: ["lightblue", "yellow", "red"],
   },
   playerData: {
     name: "Roman",
     lives: 5,
     score: 0,
-    level: 1,
+    level: 5,
   },
 };

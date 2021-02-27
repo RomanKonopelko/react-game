@@ -5,13 +5,16 @@ class SingleBrick {
     this.width = w;
     this.height = h;
     this.colors = c;
+    this.touch = 1;
     this.broke = false;
   }
   draw(ctx) {
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.fillStyle = this.broke ? "rgba(19, 73, 89, 0)" : this.colors[1];
-
+    if (this.touch === 4) ctx.fillStyle = "rgba(19, 73, 89, 0)";
+    if (this.touch === 1) ctx.fillStyle = this.colors[0];
+    if (this.touch === 2) ctx.fillStyle = this.colors[1];
+    if (this.touch === 3) ctx.fillStyle = this.colors[2];
     ctx.lineWidth = 5;
     ctx.strokeStyle = this.broke ? "rgba(19, 73, 89, 0)" : "transparent";
     // ctx.globalCompositeOperation = "destination-atop";
@@ -23,7 +26,7 @@ class SingleBrick {
 }
 
 function Brick(level, bricks, canvas, brick) {
-  brick.width = canvas.width / 5 - 1;
+  brick.width = canvas.width / 9 - 1;
   let newbricks = [];
   if (!bricks) {
     return [];
@@ -34,9 +37,10 @@ function Brick(level, bricks, canvas, brick) {
   }
 
   // Brick Formation here
-  for (let i = 0; i < 5 * level; i++) {
+  for (let i = 0; i < 9 * level; i++) {
     let newBrick = new SingleBrick(brick.x + brick.width, brick.y, brick.width, brick.height, brick.colors);
     newbricks.push(newBrick);
+    console.log(brick.colors);
     // newBrick.draw();
     brick.x += brick.width + 1;
     if (brick.x + brick.width >= canvas.width) {
