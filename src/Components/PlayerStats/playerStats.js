@@ -1,8 +1,9 @@
-export default function PlayerStats(ctx, player, canvas) {
+export default function PlayerStats(ctx, player, canvas, test) {
   // Name
   ctx.font = "20px Arial";
   ctx.fillStyle = "white";
   ctx.fillText(`Name: ${player.name}`, 20, 30);
+  ctx.drawImage(test, 15, canvas.height - 50, 30, 30);
 
   // Lives
   ctx.font = "20px Arial";

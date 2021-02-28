@@ -1,3 +1,19 @@
 #canvas {
-  background-color: cadetblue;
+  background-image: url(../../img/bg1.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#canvas__container {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+#SOUND_ON_IMG {
+  position: absolute;
+  top: 460px;
+  left: 10px;
+  width: 30px;
 }

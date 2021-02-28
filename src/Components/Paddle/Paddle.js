@@ -11,7 +11,7 @@ class Paddle {
     ctx.rect(this.x, this.y, this.width, this.height);
     ctx.fillStyle = "orange";
     ctx.strokeStyle = "black";
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 4;
     ctx.strokeRect(this.x, this.y, this.width, this.height);
     ctx.fill();
   }
