@@ -9,11 +9,10 @@ import brickCollision from "../Bricks/brickCollision";
 import playerStats from "../PlayerStats/playerStats";
 import AudioImg from "../audioImg/AudioImg";
 import GameOver from "../gameOverScreen/GameOverScreen";
+import WinScreen from "../gameOverScreen/WinScreen";
+import levelUp from "../../utils/levelUp";
 import { mouseControl, keyDownHandler } from "../../utils/paddleControl";
 import {
-  LEVEL_IMG,
-  LIFE_IMG,
-  SCORE_IMG,
   WALL_HIT,
   LIFE_LOST,
   PADDLE_HIT,
@@ -21,10 +20,9 @@ import {
   BRICK_HIT,
   winImg,
   gameOverImg,
-  SOUND_ON_IMG,
-  SOUND_OFF_IMG,
   BALL_IMG,
   PADDLE_IMG,
+  BG_MUSIC,
 } from "../../utils/audio-media";
 
 const Canvas = ({ data }) => {
@@ -39,20 +37,26 @@ const Canvas = ({ data }) => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
       paddleObj.y = canvas.height - 30;
+      BG_MUSIC.play();
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       BallAction(ctx, ballObj, BALL_IMG, status);
       initPaddle(ctx, canvas, paddleObj, PADDLE_IMG);
       wallCollision(ballObj, paddleObj, canvas, playerData, LIFE_LOST, WALL_HIT);
       paddleHit(ballObj, paddleObj, PADDLE_HIT);
+
       function gameOver() {
         if (playerData.lives <= 0) {
           setStatus("gameover");
           GAME_OVER = true;
         }
+        if (playerData.level === 6) {
+          setStatus("win");
+          WIN.play();
+          GAME_OVER = true;
+        }
       }
       gameOver();
       let newBrickSet = Brick(playerData.level, bricks, canvas, brickObj);
-
       if (newBrickSet && newBrickSet.length > 0) {
         bricks = newBrickSet;
       }
@@ -61,6 +65,7 @@ const Canvas = ({ data }) => {
         return brick.draw(ctx);
       });
 
+      levelUp(bricks, ballObj, playerData, WIN);
       let bricksCollision;
       for (let i = 0; i < bricks.length; i++) {
         bricksCollision = brickCollision(ballObj, bricks[i]);
@@ -109,6 +114,7 @@ const Canvas = ({ data }) => {
         height="500"
         width={window.innerWidth < 900 ? window.innerWidth - 20 : window.innerWidth - (window.innerWidth * 20) / 90}
       />
+      {status === "win" && <WinScreen s={s} img={winImg} />}
       {status === "gameover" && <GameOver s={s} img={gameOverImg} />}
       <AudioImg />
     </div>

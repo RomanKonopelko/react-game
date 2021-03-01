@@ -14,6 +14,7 @@ import scoreImg from "../img/score.png";
 import winImg from "../img/youwon.png";
 import ballImg from "../PNG/ball.png";
 import paddleImg from "../PNG/paddle.png";
+import bgMusic from "../sounds/BG_music.wav";
 
 const PADDLE_IMG = new Image();
 PADDLE_IMG.src = paddleImg;
@@ -41,6 +42,7 @@ SOUND_ON_IMG.src = soundOnImg;
 // ************************ //
 
 /////// LOAD SOUNDS ////////
+const BG_MUSIC = new Audio(bgMusic);
 
 const WALL_HIT = new Audio(wallHit);
 
@@ -67,5 +69,6 @@ export {
   winImg,
   gameOverImg,
   PADDLE_IMG,
+  BG_MUSIC,
 };
 /////// END LOAD SOUNDS ////////
