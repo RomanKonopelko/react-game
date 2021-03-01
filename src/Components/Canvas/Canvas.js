@@ -22,6 +22,7 @@ import {
   SOUND_ON_IMG,
   SOUND_OFF_IMG,
   BALL_IMG,
+  PADDLE_IMG,
 } from "../../utils/audio-media";
 
 const Canvas = ({ data }) => {
@@ -37,9 +38,9 @@ const Canvas = ({ data }) => {
       paddleObj.y = canvas.height - 30;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       BallAction(ctx, ballObj, BALL_IMG);
-      initPaddle(ctx, canvas, paddleObj);
+      initPaddle(ctx, canvas, paddleObj, PADDLE_IMG);
       wallCollision(ballObj, paddleObj, canvas, playerData, LIFE_LOST, WALL_HIT);
-      paddleHit(ballObj, paddleObj, canvas);
+      paddleHit(ballObj, paddleObj, PADDLE_HIT);
 
       let newBrickSet = Brick(playerData.level, bricks, canvas, brickObj);
 
@@ -54,7 +55,11 @@ const Canvas = ({ data }) => {
       let bricksCollision;
       for (let i = 0; i < bricks.length; i++) {
         bricksCollision = brickCollision(ballObj, bricks[i]);
-        if (bricksCollision.hit && !bricks[i].broke) {
+        if (bricks[i].touch === 4 && bricks[i].status === "present") {
+          bricks[i].transparentImg(ctx);
+          bricks[i].status = "vanished";
+        }
+        if (bricksCollision.hit && bricks[i].touch !== 4) {
           if (bricksCollision.axis === "X") {
             if (bricks[i].touch < 4) {
               BRICK_HIT.play();
@@ -72,6 +77,7 @@ const Canvas = ({ data }) => {
           }
         }
       }
+
       playerStats(ctx, playerData, canvas, SOUND_ON_IMG);
       requestAnimationFrame(render);
     };

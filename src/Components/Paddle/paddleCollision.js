@@ -1,13 +1,13 @@
-export default function paddleHit(ballObj, paddleObj) {
+export default function paddleHit(ballObj, paddleObj, colSound) {
   if (
     ballObj.x < paddleObj.x + paddleObj.width &&
     ballObj.x > paddleObj.x &&
     paddleObj.y < paddleObj.y + paddleObj.height &&
     ballObj.y + ballObj.rad > paddleObj.y - paddleObj.height / 2
   ) {
+    colSound.play();
     // CHECK WHERE THE ballObj HIT THE paddleProps
     let collidePoint = ballObj.x - (paddleObj.x + paddleObj.width / 2);
-    console.log("object");
     // NORMALIZE THE VALUES
     collidePoint = collidePoint / (paddleObj.width / 2);
 

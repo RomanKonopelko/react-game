@@ -5,31 +5,43 @@ import paddleHit from "../sounds/paddle_hit.wav";
 import wallHit from "../sounds/wall.wav";
 import brickHit from "../sounds/brick_hit.wav";
 import lifeLost from "../sounds/life_lost.wav";
-import brickImg from "../PNG/01-Breakout-Tiles.png";
+import winSound from "../sounds/win.wav";
+import soundOffImg from "../img/SOUND_OFF.png";
+import gameOverImg from "../img/gameover.png";
+import levelImg from "../img/level.png";
+import lifeImg from "../img/life.png";
+import scoreImg from "../img/score.png";
+import winImg from "../img/youwon.png";
 import ballImg from "../PNG/ball.png";
-// LOAD BG IMAGE
-const BG_IMG = new Image();
-BG_IMG.src = "img/bg.jpg";
+import paddleImg from "../PNG/paddle.png";
+
+const WIN_IMG = new Image();
+WIN_IMG.src = winImg;
+
+const PADDLE_IMG = new Image();
+PADDLE_IMG.src = paddleImg;
+
+const GAME_OVER_ING = new Image();
+GAME_OVER_ING.src = gameOverImg;
 
 const BALL_IMG = new Image();
 BALL_IMG.src = ballImg;
+
 const LEVEL_IMG = new Image();
-LEVEL_IMG.src = "img/level.png";
+LEVEL_IMG.src = levelImg;
 
 const LIFE_IMG = new Image();
-LIFE_IMG.src = "img/life.png";
+LIFE_IMG.src = lifeImg;
 
 const SCORE_IMG = new Image();
-SCORE_IMG.src = "img/score.png";
+SCORE_IMG.src = scoreImg;
 
 const SOUND_OFF_IMG = new Image();
-SOUND_OFF_IMG.src = "img/SOUND_OFF.png";
+SOUND_OFF_IMG.src = soundOffImg;
 
 const SOUND_ON_IMG = new Image();
 SOUND_ON_IMG.src = soundOnImg;
 
-const BRICK_IMG = new Image();
-BRICK_IMG.src = brickImg;
 /////// END LOAD IMAGES ////////
 
 // ************************ //
@@ -42,8 +54,7 @@ const LIFE_LOST = new Audio(lifeLost);
 
 const PADDLE_HIT = new Audio(paddleHit);
 
-const WIN = new Audio();
-WIN.src = "../sounds/win.mp3";
+const WIN = new Audio(winSound);
 
 const BRICK_HIT = new Audio(brickHit);
 
@@ -58,7 +69,9 @@ export {
   BRICK_HIT,
   SOUND_OFF_IMG,
   SOUND_ON_IMG,
-  BRICK_IMG,
   BALL_IMG,
+  WIN_IMG,
+  GAME_OVER_ING,
+  PADDLE_IMG,
 };
 /////// END LOAD SOUNDS ////////

@@ -1,23 +1,22 @@
 class Paddle {
-  constructor(ctx, canvas, paddleObj) {
+  constructor(ctx, canvas, paddleObj, img) {
     this.x = paddleObj.x;
     this.y = canvas.height - 30;
     this.height = paddleObj.height;
     this.width = paddleObj.width;
     this.colors = ["red"];
+    this.paddleImg = img;
   }
   createOnCanvas(ctx) {
     ctx.beginPath();
     ctx.rect(this.x, this.y, this.width, this.height);
-    ctx.fillStyle = "orange";
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 4;
-    ctx.strokeRect(this.x, this.y, this.width, this.height);
+    ctx.drawImage(this.paddleImg, this.x, this.y, this.width, this.height);
+    ctx.fillStyle = "transparent";
     ctx.fill();
   }
 }
-export default function initPaddle(ctx, canvas, paddleObj) {
-  let paddle = new Paddle(ctx, canvas, paddleObj);
+export default function initPaddle(ctx, canvas, paddleObj, img) {
+  let paddle = new Paddle(ctx, canvas, paddleObj, img);
 
   paddle.createOnCanvas(ctx);
   if (paddleObj.x <= 0) {
