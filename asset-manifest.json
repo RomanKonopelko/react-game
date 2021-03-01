@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/goit-react-hw-01-components/static/css/main.83ce1247.chunk.css",
+    "main.js": "/goit-react-hw-01-components/static/js/main.acd8083a.chunk.js",
+    "main.js.map": "/goit-react-hw-01-components/static/js/main.acd8083a.chunk.js.map",
+    "runtime-main.js": "/goit-react-hw-01-components/static/js/runtime-main.a28baaec.js",
+    "runtime-main.js.map": "/goit-react-hw-01-components/static/js/runtime-main.a28baaec.js.map",
+    "static/js/2.faaf70b3.chunk.js": "/goit-react-hw-01-components/static/js/2.faaf70b3.chunk.js",
+    "static/js/2.faaf70b3.chunk.js.map": "/goit-react-hw-01-components/static/js/2.faaf70b3.chunk.js.map",
+    "index.html": "/goit-react-hw-01-components/index.html",
+    "static/css/main.83ce1247.chunk.css.map": "/goit-react-hw-01-components/static/css/main.83ce1247.chunk.css.map",
+    "static/js/2.faaf70b3.chunk.js.LICENSE.txt": "/goit-react-hw-01-components/static/js/2.faaf70b3.chunk.js.LICENSE.txt",
+    "static/media/02-Breakout-Tiles.b3217fe5.png": "/goit-react-hw-01-components/static/media/02-Breakout-Tiles.b3217fe5.png",
+    "static/media/08-Breakout-Tiles.217701bb.png": "/goit-react-hw-01-components/static/media/08-Breakout-Tiles.217701bb.png",
+    "static/media/BG_music.f7df8eb0.wav": "/goit-react-hw-01-components/static/media/BG_music.f7df8eb0.wav",
+    "static/media/SOUND_OFF.c7e186bb.png": "/goit-react-hw-01-components/static/media/SOUND_OFF.c7e186bb.png",
+    "static/media/ball.3998f1a7.png": "/goit-react-hw-01-components/static/media/ball.3998f1a7.png",
+    "static/media/Canvas.module.css": "/goit-react-hw-01-components/static/media/bg.2a5ba98f.jpg",
+    "static/media/brick_hit.ac375f83.wav": "/goit-react-hw-01-components/static/media/brick_hit.ac375f83.wav",
+    "static/media/gameover.57ca248a.png": "/goit-react-hw-01-components/static/media/gameover.57ca248a.png",
+    "static/media/level.e93cdb48.png": "/goit-react-hw-01-components/static/media/level.e93cdb48.png",
+    "static/media/life.0955a0c2.png": "/goit-react-hw-01-components/static/media/life.0955a0c2.png",
+    "static/media/life_lost.b9bc6491.wav": "/goit-react-hw-01-components/static/media/life_lost.b9bc6491.wav",
+    "static/media/paddle.6ab7c893.png": "/goit-react-hw-01-components/static/media/paddle.6ab7c893.png",
+    "static/media/paddle_hit.5b1ba66c.wav": "/goit-react-hw-01-components/static/media/paddle_hit.5b1ba66c.wav",
+    "static/media/score.02dd7060.png": "/goit-react-hw-01-components/static/media/score.02dd7060.png",
+    "static/media/wall.2f1796ca.wav": "/goit-react-hw-01-components/static/media/wall.2f1796ca.wav",
+    "static/media/win.a5a8f3c2.wav": "/goit-react-hw-01-components/static/media/win.a5a8f3c2.wav",
+    "static/media/youwon.ab87f628.png": "/goit-react-hw-01-components/static/media/youwon.ab87f628.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a28baaec.js",
+    "static/js/2.faaf70b3.chunk.js",
+    "static/css/main.83ce1247.chunk.css",
+    "static/js/main.acd8083a.chunk.js"
+  ]
+}
