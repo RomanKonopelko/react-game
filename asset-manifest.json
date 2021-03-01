@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/react-game/static/css/main.a72f835e.chunk.css",
-    "main.js": "/react-game/static/js/main.8dbe2571.chunk.js",
-    "main.js.map": "/react-game/static/js/main.8dbe2571.chunk.js.map",
+    "main.js": "/react-game/static/js/main.63e2b801.chunk.js",
+    "main.js.map": "/react-game/static/js/main.63e2b801.chunk.js.map",
     "runtime-main.js": "/react-game/static/js/runtime-main.a8de5e2f.js",
     "runtime-main.js.map": "/react-game/static/js/runtime-main.a8de5e2f.js.map",
-    "static/js/2.3ec2a8fb.chunk.js": "/react-game/static/js/2.3ec2a8fb.chunk.js",
-    "static/js/2.3ec2a8fb.chunk.js.map": "/react-game/static/js/2.3ec2a8fb.chunk.js.map",
+    "static/js/2.eeb648ca.chunk.js": "/react-game/static/js/2.eeb648ca.chunk.js",
+    "static/js/2.eeb648ca.chunk.js.map": "/react-game/static/js/2.eeb648ca.chunk.js.map",
     "index.html": "/react-game/index.html",
     "static/css/main.a72f835e.chunk.css.map": "/react-game/static/css/main.a72f835e.chunk.css.map",
-    "static/js/2.3ec2a8fb.chunk.js.LICENSE.txt": "/react-game/static/js/2.3ec2a8fb.chunk.js.LICENSE.txt",
+    "static/js/2.eeb648ca.chunk.js.LICENSE.txt": "/react-game/static/js/2.eeb648ca.chunk.js.LICENSE.txt",
     "static/media/02-Breakout-Tiles.b3217fe5.png": "/react-game/static/media/02-Breakout-Tiles.b3217fe5.png",
     "static/media/08-Breakout-Tiles.217701bb.png": "/react-game/static/media/08-Breakout-Tiles.217701bb.png",
     "static/media/BG_music.f7df8eb0.wav": "/react-game/static/media/BG_music.f7df8eb0.wav",
@@ -30,8 +30,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a8de5e2f.js",
-    "static/js/2.3ec2a8fb.chunk.js",
+    "static/js/2.eeb648ca.chunk.js",
     "static/css/main.a72f835e.chunk.css",
-    "static/js/main.8dbe2571.chunk.js"
+    "static/js/main.63e2b801.chunk.js"
   ]
 }
