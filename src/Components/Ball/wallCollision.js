@@ -1,5 +1,3 @@
-import { LIFE_LOST, WALL_HIT } from "../../utils/audio-media";
-
 export default function (ballObj, paddleObj, canvas, player, LIFE_LOST, WALL_HIT) {
   if (ballObj.y + ballObj.rad > canvas.height) {
     ballObj.x = paddleObj.x + 50;

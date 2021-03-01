@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import UseSounds from "use-sound";
+import { useEffect, useRef, useState } from "react";
 import s from "./Canvas.module.css";
 import wallCollision from "../Ball/wallCollision";
 import BallAction from "../Ball/BallAction";
@@ -8,6 +7,8 @@ import Brick from "../Bricks/Bricks";
 import paddleHit from "../Paddle/paddleCollision";
 import brickCollision from "../Bricks/brickCollision";
 import playerStats from "../PlayerStats/playerStats";
+import AudioImg from "../audioImg/AudioImg";
+import GameOver from "../gameOverScreen/GameOverScreen";
 import { mouseControl, keyDownHandler } from "../../utils/paddleControl";
 import {
   LEVEL_IMG,
@@ -18,7 +19,8 @@ import {
   PADDLE_HIT,
   WIN,
   BRICK_HIT,
-  Img,
+  winImg,
+  gameOverImg,
   SOUND_ON_IMG,
   SOUND_OFF_IMG,
   BALL_IMG,
@@ -26,7 +28,9 @@ import {
 } from "../../utils/audio-media";
 
 const Canvas = ({ data }) => {
+  const [status, setStatus] = useState("game");
   let bricks = [];
+  let GAME_OVER = false;
   const { ballObj, paddleObj, brickObj, playerData } = data;
   const canvasRef = useRef(null);
 
@@ -34,14 +38,19 @@ const Canvas = ({ data }) => {
     const render = () => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
-
       paddleObj.y = canvas.height - 30;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      BallAction(ctx, ballObj, BALL_IMG);
+      BallAction(ctx, ballObj, BALL_IMG, status);
       initPaddle(ctx, canvas, paddleObj, PADDLE_IMG);
       wallCollision(ballObj, paddleObj, canvas, playerData, LIFE_LOST, WALL_HIT);
       paddleHit(ballObj, paddleObj, PADDLE_HIT);
-
+      function gameOver() {
+        if (playerData.lives <= 0) {
+          setStatus("gameover");
+          GAME_OVER = true;
+        }
+      }
+      gameOver();
       let newBrickSet = Brick(playerData.level, bricks, canvas, brickObj);
 
       if (newBrickSet && newBrickSet.length > 0) {
@@ -78,15 +87,15 @@ const Canvas = ({ data }) => {
         }
       }
 
-      playerStats(ctx, playerData, canvas, SOUND_ON_IMG);
-      requestAnimationFrame(render);
+      playerStats(ctx, playerData, canvas);
+      if (!GAME_OVER) requestAnimationFrame(render);
     };
     render();
   }, []);
 
   return (
     <div id={s.canvas__container} style={{ textAlign: "center" }}>
-      {/* <Img /> */}
+      {playerData.lives === 1 && alert("test")}
       <canvas
         id={s.canvas}
         ref={canvasRef}
@@ -98,8 +107,10 @@ const Canvas = ({ data }) => {
           keyDownHandler(e, paddleObj, canvasRef.current);
         }}
         height="500"
-        width={window.innerWidth < 900 ? window.innerWidth - 20 : window.innerWidth - (window.innerWidth * 20) / 100}
-      ></canvas>
+        width={window.innerWidth < 900 ? window.innerWidth - 20 : window.innerWidth - (window.innerWidth * 20) / 90}
+      />
+      {status === "gameover" && <GameOver s={s} img={gameOverImg} />}
+      <AudioImg />
     </div>
   );
 };

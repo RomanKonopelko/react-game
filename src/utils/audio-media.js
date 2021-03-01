@@ -15,14 +15,8 @@ import winImg from "../img/youwon.png";
 import ballImg from "../PNG/ball.png";
 import paddleImg from "../PNG/paddle.png";
 
-const WIN_IMG = new Image();
-WIN_IMG.src = winImg;
-
 const PADDLE_IMG = new Image();
 PADDLE_IMG.src = paddleImg;
-
-const GAME_OVER_ING = new Image();
-GAME_OVER_ING.src = gameOverImg;
 
 const BALL_IMG = new Image();
 BALL_IMG.src = ballImg;
@@ -67,11 +61,11 @@ export {
   PADDLE_HIT,
   WIN,
   BRICK_HIT,
-  SOUND_OFF_IMG,
-  SOUND_ON_IMG,
+  soundOffImg,
+  soundOnImg,
   BALL_IMG,
-  WIN_IMG,
-  GAME_OVER_ING,
+  winImg,
+  gameOverImg,
   PADDLE_IMG,
 };
 /////// END LOAD SOUNDS ////////
