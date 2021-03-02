@@ -1,4 +1,4 @@
-import ResetBall from "./resetBall";
+import resetBall from "./resetBall";
 import data from "../Components/data";
 
 export default function AllBroken(bricks, ballObj, playerData, WIN) {
@@ -12,7 +12,7 @@ export default function AllBroken(bricks, ballObj, playerData, WIN) {
   if (total === bricks.length) {
     WIN.play();
     playerData.level += 1;
-    ResetBall(ballObj, paddleObj);
+    resetBall(ballObj, paddleObj);
     brickObj.y = 50;
   }
 }

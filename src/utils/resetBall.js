@@ -1,4 +1,4 @@
-export default function ResetBall(ballObj, paddleObj) {
+export default function resetBall(ballObj, paddleObj) {
   ballObj.x = paddleObj.x;
   ballObj.y = paddleObj.y - 80;
   ballObj.dx = 6 * (Math.random() * 2 - 1);

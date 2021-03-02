@@ -22,9 +22,9 @@ export default {
     colors: ["lightblue", "yellow", "red"],
   },
   playerData: {
-    name: "Roman",
+    name: "MrPaddle",
     lives: 5,
     score: 0,
-    level: 1,
+    level: 6,
   },
 };

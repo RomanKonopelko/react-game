@@ -24,22 +24,21 @@ import {
   PADDLE_IMG,
   BG_MUSIC,
 } from "../../utils/audio-media";
-
 const Canvas = ({ data }) => {
-  const [status, setStatus] = useState("game");
+  const [status, setStatus] = useState("home");
   let bricks = [];
-  let GAME_OVER = false;
   const { ballObj, paddleObj, brickObj, playerData } = data;
+  let GAME_OVER = false;
+  let HOME_STATUS = true;
   const canvasRef = useRef(null);
-
   useEffect(() => {
     const render = () => {
       const canvas = canvasRef.current;
       const ctx = canvas.getContext("2d");
       paddleObj.y = canvas.height - 30;
-      BG_MUSIC.play();
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      BallAction(ctx, ballObj, BALL_IMG, status);
+      BallAction(ctx, ballObj, BALL_IMG, paddleObj, HOME_STATUS);
       initPaddle(ctx, canvas, paddleObj, PADDLE_IMG);
       wallCollision(ballObj, paddleObj, canvas, playerData, LIFE_LOST, WALL_HIT);
       paddleHit(ballObj, paddleObj, PADDLE_HIT);
@@ -99,7 +98,13 @@ const Canvas = ({ data }) => {
   }, []);
 
   return (
-    <div id={s.canvas__container} style={{ textAlign: "center" }}>
+    <div
+      onClick={() => {
+        BG_MUSIC.play();
+      }}
+      id={s.canvas__container}
+      style={{ textAlign: "center" }}
+    >
       {playerData.lives === 1 && alert("test")}
       <canvas
         id={s.canvas}
@@ -114,8 +119,31 @@ const Canvas = ({ data }) => {
         height="500"
         width={window.innerWidth < 900 ? window.innerWidth - 20 : window.innerWidth - (window.innerWidth * 20) / 90}
       />
-      {status === "win" && <WinScreen s={s} img={winImg} />}
+      {status === "win" && <WinScreen s={s} img={winImg} score={playerData.score} />}
       {status === "gameover" && <GameOver s={s} img={gameOverImg} />}
+      {status === "home" && (
+        <div
+          onKeyPress={(e) => {
+            if (e.key === "Enter") {
+              setStatus("game");
+              HOME_STATUS = false;
+            }
+          }}
+          id={s.gameover}
+        >
+          <p className={s.grats}>Welcome to BREAKOUT game</p>
+
+          <input
+            placeholder="What's your your name?"
+            className={s.input}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") playerData.name = e.target.value;
+            }}
+            type="text"
+          ></input>
+          <p id={s.restart}>Press Enter!</p>
+        </div>
+      )}
       <AudioImg />
     </div>
   );

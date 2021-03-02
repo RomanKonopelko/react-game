@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/react-game/static/css/main.a72f835e.chunk.css",
+    "main.js": "/react-game/static/js/main.b7b58a3e.chunk.js",
+    "main.js.map": "/react-game/static/js/main.b7b58a3e.chunk.js.map",
+    "runtime-main.js": "/react-game/static/js/runtime-main.a8de5e2f.js",
+    "runtime-main.js.map": "/react-game/static/js/runtime-main.a8de5e2f.js.map",
+    "static/js/2.d8d298ba.chunk.js": "/react-game/static/js/2.d8d298ba.chunk.js",
+    "static/js/2.d8d298ba.chunk.js.map": "/react-game/static/js/2.d8d298ba.chunk.js.map",
+    "index.html": "/react-game/index.html",
+    "static/css/main.a72f835e.chunk.css.map": "/react-game/static/css/main.a72f835e.chunk.css.map",
+    "static/js/2.d8d298ba.chunk.js.LICENSE.txt": "/react-game/static/js/2.d8d298ba.chunk.js.LICENSE.txt",
+    "static/media/02-Breakout-Tiles.b3217fe5.png": "/react-game/static/media/02-Breakout-Tiles.b3217fe5.png",
+    "static/media/08-Breakout-Tiles.217701bb.png": "/react-game/static/media/08-Breakout-Tiles.217701bb.png",
+    "static/media/BG_music.f7df8eb0.wav": "/react-game/static/media/BG_music.f7df8eb0.wav",
+    "static/media/SOUND_OFF.c7e186bb.png": "/react-game/static/media/SOUND_OFF.c7e186bb.png",
+    "static/media/ball.3998f1a7.png": "/react-game/static/media/ball.3998f1a7.png",
+    "static/media/Canvas.module.css": "/react-game/static/media/bg.2a5ba98f.jpg",
+    "static/media/brick_hit.ac375f83.wav": "/react-game/static/media/brick_hit.ac375f83.wav",
+    "static/media/gameover.57ca248a.png": "/react-game/static/media/gameover.57ca248a.png",
+    "static/media/level.e93cdb48.png": "/react-game/static/media/level.e93cdb48.png",
+    "static/media/life.0955a0c2.png": "/react-game/static/media/life.0955a0c2.png",
+    "static/media/life_lost.b9bc6491.wav": "/react-game/static/media/life_lost.b9bc6491.wav",
+    "static/media/paddle.6ab7c893.png": "/react-game/static/media/paddle.6ab7c893.png",
+    "static/media/paddle_hit.5b1ba66c.wav": "/react-game/static/media/paddle_hit.5b1ba66c.wav",
+    "static/media/score.02dd7060.png": "/react-game/static/media/score.02dd7060.png",
+    "static/media/wall.2f1796ca.wav": "/react-game/static/media/wall.2f1796ca.wav",
+    "static/media/win.a5a8f3c2.wav": "/react-game/static/media/win.a5a8f3c2.wav",
+    "static/media/youwon.ab87f628.png": "/react-game/static/media/youwon.ab87f628.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a8de5e2f.js",
+    "static/js/2.d8d298ba.chunk.js",
+    "static/css/main.a72f835e.chunk.css",
+    "static/js/main.b7b58a3e.chunk.js"
+  ]
+}
