@@ -157,18 +157,6 @@ const Canvas = ({ data }) => {
           mouseControl(event, paddleObj);
         }}
         tabIndex="0"
-        onKeyDown={(e) => {
-          if (e.key === "Right" || e.key === "ArrowRight") {
-            rightArrow = true;
-          }
-          if (e.key === "Left" || e.key === "ArrowLeft") {
-            leftArrow = true;
-          }
-        }}
-        onKeyUp={(e) => {
-          if (e.key === "Right" || e.key === "ArrowRight") rightArrow = false;
-          if (e.key === "Left" || e.key === "ArrowLeft") leftArrow = false;
-        }}
         height={fullscreen ? fullscreenHeight : fullscreenHeight}
         width={window.innerWidth}
       />
@@ -250,5 +238,17 @@ const Canvas = ({ data }) => {
     </div>
   );
 };
-window.addEventListener("keydown", (e) => {});
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Right" || e.key === "ArrowRight") {
+    rightArrow = true;
+  }
+  if (e.key === "Left" || e.key === "ArrowLeft") {
+    leftArrow = true;
+  }
+});
+
+window.addEventListener("keyup", (e) => {
+  if (e.key === "Right" || e.key === "ArrowRight") rightArrow = false;
+  if (e.key === "Left" || e.key === "ArrowLeft") leftArrow = false;
+});
 export default Canvas;
