@@ -1,20 +1,32 @@
 const mouseControl = (event, paddleObj) => {
-  return (paddleObj.x =
-    event.clientX - (window.innerWidth < 900 ? 10 : (window.innerWidth * 20) / 200) - paddleObj.width / 2 - 20);
+  return (paddleObj.x = event.clientX - paddleObj.width / 2);
 };
 
-function keyDownHandler(e, paddle, canvas) {
-  if (e.key == "Right" || e.key == "ArrowRight") {
-    paddle.x += 40;
+// function keyDownHandler(e) {
+//   if (e.key === "Right" || e.key === "ArrowRight") {
+//     rightArrow = true;
+//   }
+//   if (e.key === "Left" || e.key === "ArrowLeft") {
+//     leftArrow = true;
+//   }
+// }
+
+function paddleMove(rightArrow, leftArrow, paddle, canvas) {
+  if (rightArrow) {
+    paddle.x += 10;
     if (paddle.x + paddle.width > canvas.width) {
       paddle.x = 0;
     }
-  } else if (e.key == "Left" || e.key == "ArrowLeft") {
-    paddle.x -= 40;
+  }
+  if (leftArrow) {
+    paddle.x -= 10;
     if (paddle.x < 0) {
       paddle.x = canvas.width;
     }
   }
 }
-
-export { mouseControl, keyDownHandler };
+function keyUpHandler(e, rightArrow, leftArrow) {
+  if (e.key === "Right" || e.key === "ArrowRight") rightArrow = false;
+  if (e.key === "Left" || e.key === "ArrowLeft") leftArrow = false;
+}
+export { mouseControl, paddleMove, keyUpHandler };

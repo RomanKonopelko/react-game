@@ -25,6 +25,6 @@ export default {
     name: "MrPaddle",
     lives: 5,
     score: 0,
-    level: 6,
+    level: 1,
   },
 };
