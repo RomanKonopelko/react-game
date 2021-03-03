@@ -6,11 +6,11 @@ export default function PlayerStats(ctx, player, canvas) {
   // Lives
   let gap = 0;
   for (let i = 0; i < player.lives; i++) {
-    if (window.innerWidth <= 900) {
+    if (window.innerWidth <= 1150) {
       gap += 20;
-      ctx.drawImage(LIFE_IMG, canvas.width / 2 - gap, 10, 18, 18);
-      ctx.drawImage(LEVEL_IMG, canvas.width - 140, 10, 18, 18);
-      ctx.drawImage(SCORE_IMG, canvas.width - 80, 10, 18, 18);
+      ctx.drawImage(LIFE_IMG, canvas.width / 2 - gap, 15, 20, 20);
+      ctx.drawImage(LEVEL_IMG, canvas.width - 140, 15, 20, 20);
+      ctx.drawImage(SCORE_IMG, canvas.width - 80, 15, 20, 20);
     } else {
       gap += 40;
       ctx.drawImage(LIFE_IMG, canvas.width / 2 + gap, 10, 30, 30);
@@ -18,15 +18,15 @@ export default function PlayerStats(ctx, player, canvas) {
       ctx.drawImage(SCORE_IMG, canvas.width - 180, 10, 30, 30);
     }
   }
-  if (window.innerWidth <= 900) {
+  if (window.innerWidth <= 1150) {
     ctx.font = "14px Arial";
     ctx.fillStyle = "red";
-    ctx.fillText(`Name: ${player.name}`, 20, 22);
+    ctx.fillText(`Name: ${player.name}`, 20, 30);
     ctx.font = "12px Arial";
-    ctx.fillText(`${player.level}`, canvas.width - 120, 22);
+    ctx.fillText(`${player.level}`, canvas.width - 120, 30);
     ctx.font = "12px Arial";
     ctx.fillStyle = "red";
-    ctx.fillText(`Score: ${player.score}`, canvas.width - 60, 22);
+    ctx.fillText(`Score: ${player.score}`, canvas.width - 60, 30);
   } else {
     gap += 40;
     ctx.font = "20px Arial";

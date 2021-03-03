@@ -12,6 +12,7 @@ import GameOver from "../gameOverScreen/GameOverScreen";
 import WinScreen from "../gameOverScreen/WinScreen";
 import levelUp from "../../utils/levelUp";
 import fullscreenManager from "../../utils/fullscreenManager";
+import PauseScreen from "../gameOverScreen/PauseScreen";
 import checkDifficulty from "../../utils/checkDifficulty";
 import { mouseControl, keyDownHandler, keyUpHandler, paddleMove } from "../../utils/paddleControl";
 import {
@@ -24,25 +25,29 @@ import {
   gameOverImg,
   BALL_IMG,
   PADDLE_IMG,
-  fullscreenImg,
+  fullscreenOutImg,
   BG_MUSIC,
 } from "../../utils/audio-media";
 
 let HOME_STATUS = true;
 let rightArrow = false;
 let leftArrow = false;
+let fullscreenStatus = false;
+let fullscreenHeight = window.innerHeight - 10;
+let PAUSE_STATUS = true;
 
 const Canvas = ({ data }) => {
   const [status, setStatus] = useState("home");
   const diffArray = ["normal", "medium", "hard"];
   const [difficulty, setDifficulty] = useState(diffArray[0]);
   const [fullscreen, setFullscreen] = useState("false");
+  const [pause, setPause] = useState(false);
+
   let bricks = [];
   const { ballObj, paddleObj, brickObj, playerData } = data;
   let GAME_OVER = false;
 
   checkDifficulty(difficulty, data);
-  console.log(HOME_STATUS);
 
   const canvasRef = useRef(null);
   useEffect(() => {
@@ -52,8 +57,9 @@ const Canvas = ({ data }) => {
       paddleObj.y = canvas.height - 30;
 
       if (HOME_STATUS) paddleObj.x = ballObj.x - paddleObj.width + 45;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      BallAction(ctx, ballObj, BALL_IMG, paddleObj, HOME_STATUS);
+      BallAction(ctx, ballObj, BALL_IMG, paddleObj);
       initPaddle(ctx, canvas, paddleObj, PADDLE_IMG);
       wallCollision(ballObj, paddleObj, canvas, playerData, LIFE_LOST, WALL_HIT);
       paddleHit(ballObj, paddleObj, PADDLE_HIT);
@@ -115,15 +121,31 @@ const Canvas = ({ data }) => {
           }
         }
       }
+
       if (!GAME_OVER) requestAnimationFrame(render);
+
+      if (PAUSE_STATUS || HOME_STATUS) {
+        ballObj.x += ballObj.dx;
+        ballObj.y += ballObj.dy;
+      } else if (!PAUSE_STATUS || !HOME_STATUS) {
+        ballObj.x += 0;
+        ballObj.y += 0;
+      }
     };
     render();
   }, []);
 
   return (
     <div
+      tabIndex="0"
       onClick={() => {
         BG_MUSIC.play();
+      }}
+      onKeyPress={(e) => {
+        if (e.key === " ") {
+          pause ? setPause(false) : setPause(true);
+          pause && status === "game" ? (PAUSE_STATUS = true) : (PAUSE_STATUS = false);
+        }
       }}
       id={s.canvas__container}
       style={{ textAlign: "center" }}
@@ -138,7 +160,6 @@ const Canvas = ({ data }) => {
         onKeyDown={(e) => {
           if (e.key === "Right" || e.key === "ArrowRight") {
             rightArrow = true;
-            console.log(rightArrow);
           }
           if (e.key === "Left" || e.key === "ArrowLeft") {
             leftArrow = true;
@@ -148,9 +169,10 @@ const Canvas = ({ data }) => {
           if (e.key === "Right" || e.key === "ArrowRight") rightArrow = false;
           if (e.key === "Left" || e.key === "ArrowLeft") leftArrow = false;
         }}
-        height={fullscreen !== "fullscreen" ? window.innerHeight + 90 : window.innerHeight - 10}
-        width={window.innerWidth < 900 ? window.innerWidth - 20 : window.innerWidth - 20}
+        height={fullscreen ? fullscreenHeight : fullscreenHeight}
+        width={window.innerWidth}
       />
+      {pause && status === "game" && <PauseScreen s={s} />}
       {status === "win" && <WinScreen s={s} img={winImg} score={playerData.score} />}
       {status === "gameover" && <GameOver s={s} img={gameOverImg} />}
       {status === "home" && (
@@ -168,6 +190,7 @@ const Canvas = ({ data }) => {
           <p className={s.difficulty}>
             Difficulty:
             <span
+              className={s.leftArrow}
               onClick={() => {
                 if (difficulty === "normal") setDifficulty(diffArray[2]);
                 if (difficulty === "medium") setDifficulty(diffArray[0]);
@@ -182,6 +205,7 @@ const Canvas = ({ data }) => {
               {difficulty === "hard" && "Hard"}
             </span>
             <span
+              className={s.rightArrow}
               onClick={() => {
                 if (difficulty === "normal") setDifficulty(diffArray[1]);
                 if (difficulty === "medium") setDifficulty(diffArray[2]);
@@ -192,28 +216,33 @@ const Canvas = ({ data }) => {
             </span>
           </p>
           <p className={s.controls}>Controls: Mouse, &#x2B05; , &#x27A1; </p>
+          <p className={s.pauseRef}>Pause : spacebar</p>
           <p
             id={s.restart}
             onClick={() => {
-              // document.documentElement.requestFullscreen();
               HOME_STATUS = false;
               ballObj.x = canvasRef.current.width / 2;
               ballObj.y = 300;
+              ballObj.dx = 3;
+              ballObj.dy = 3;
+              ballObj.dy *= 1;
               paddleObj.x = canvasRef.current.width / 2;
               setStatus("game");
             }}
           >
-            Press Enter!
+            Start!
           </p>
+          <p className={s.warning}> &#x2B05; To exit fullscreen mode use this button! ;)</p>
         </div>
       )}
       <img
         onClick={(e) => {
           fullscreenManager(e);
-          fullscreen !== "fullscreen" && setFullscreen("fullscreen");
-          fullscreen !== "notFullscreen" && setFullscreen("notFullscreen");
+          fullscreen ? (fullscreenHeight = window.outerHeight + 20) : (fullscreenHeight = window.innerHeight - 110);
+          fullscreen ? (fullscreenStatus = true) : (fullscreenStatus = false);
+          fullscreen ? setFullscreen(false) : setFullscreen(true);
         }}
-        src={fullscreenImg}
+        src={fullscreenOutImg}
         alt=""
         id={s.fullscreen}
       />
@@ -221,5 +250,5 @@ const Canvas = ({ data }) => {
     </div>
   );
 };
-
+window.addEventListener("keydown", (e) => {});
 export default Canvas;

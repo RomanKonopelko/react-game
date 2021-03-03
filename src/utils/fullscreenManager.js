@@ -7,10 +7,8 @@ export default function fullscreenManager(e) {
   e.target.setAttribute("src", SCREEN_IMG);
 
   if (!document.fullscreenElement) {
-    document.documentElement.requestFullscreen();
+    document.documentElement.webkitRequestFullScreen();
   } else {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    }
+    document.exitFullscreen();
   }
 }

@@ -17,7 +17,7 @@ import paddleImg from "../PNG/paddle.png";
 import bgMusic from "../sounds/BG_music.wav";
 import fullscreenImg from "../img/fullscreen.png";
 import fullscreenOutImg from "../img/fullscreenOut.png";
-
+import pauseImg from "../img/pause.png";
 const PADDLE_IMG = new Image();
 PADDLE_IMG.src = paddleImg;
 
@@ -74,5 +74,6 @@ export {
   BG_MUSIC,
   fullscreenImg,
   fullscreenOutImg,
+  pauseImg,
 };
 /////// END LOAD SOUNDS ////////
